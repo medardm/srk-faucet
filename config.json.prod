@@ -5,12 +5,20 @@
     "secret": "6Lfe3I0UAAAAAJGAlZEETVmbk3-wRnqYH1ActFme"
   },
   "Ethereum": {
-    "milliEtherToTransfer": 50,
-    "gasLimit": "30000",
+    "milliEtherToTransfer": 1000,
+    "gasLimit": "100000",
     "live": {
       "rpc": "",
       "account": "",
       "privateKey": ""
+    },
+    "CustomToken": {
+        "name": "",
+        "symbol": "",
+        "address": "",
+        "decimals": "",
+        "abi": ""
     }
-  }
+  },
+
 }
