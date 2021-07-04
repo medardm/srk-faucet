@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f13ff88-a1c3-448b-87c0-5d88c3a7f87a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/srk-logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicons/srk-logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.json.prod" beforeDir="false" afterPath="$PROJECT_DIR$/config.json.prod" afterDir="false" />
+    <list default="true" id="8ff18c0b-37ac-4ae4-b1b0-486309f84dc4" name="Change support to SRK token and adjust function calls" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/images/goerli-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicons/android-chrome-192x192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicons/apple-touch-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicons/favicon-16x16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicons/favicon-32x32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicons/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicons/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicons/mstile-150x150.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicons/safari-pinned-tab.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/javascripts/application/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/javascripts/application/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/index.js" afterDir="false" />
     </list>
+    <list id="3f13ff88-a1c3-448b-87c0-5d88c3a7f87a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,6 +66,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3f13ff88-a1c3-448b-87c0-5d88c3a7f87a" name="Default Changelist" comment="" />
+      <changelist id="8ff18c0b-37ac-4ae4-b1b0-486309f84dc4" name="Change support to SRK token and adjust function calls" comment="" />
       <created>1625131902248</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -84,12 +74,43 @@
       <workItem from="1625131904567" duration="487000" />
       <workItem from="1625132435099" duration="1041000" />
       <workItem from="1625133562103" duration="105000" />
-      <workItem from="1625133697990" duration="5927000" />
+      <workItem from="1625133697990" duration="18564000" />
     </task>
+    <task id="LOCAL-00001" summary="Adjust user interface and config.json.prod">
+      <created>1625211208337</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1625211208337</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Change support to SRK token and adjust function calls">
+      <created>1625421278343</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1625421278343</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Adjust user interface and config.json.prod" />
+    <MESSAGE value="Change support to SRK token and adjust function calls" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change support to SRK token and adjust function calls" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

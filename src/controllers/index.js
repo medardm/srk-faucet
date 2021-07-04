@@ -14,6 +14,8 @@ module.exports = function (app) {
 		TX_HAS_BEEN_MINED: 'Tx has been mined',
 	}
 
+	const tokenContract = new web3.eth.Contract(config.Ethereum.Token.abi, config.Ethereum.Token.address);
+
 	app.post('/', async function(request, response) {
 		const isDebug = app.config.debug
 		debug(isDebug, "REQUEST:")
@@ -41,10 +43,14 @@ module.exports = function (app) {
 	app.get('/health', async function(request, response) {
 		let balanceInWei
 		let balanceInEth
+        let srkBalanceExpanded
+        let srkBalance
 		const address = config.Ethereum[config.environment].account
 		try {
 			balanceInWei = await web3.eth.getBalance(address)
 			balanceInEth = await web3.utils.fromWei(balanceInWei, "ether")
+            srkBalanceExpanded = await tokenContract.methods.balanceOf(address).call()
+            srkBalance = await web3.utils.fromWei(srkBalanceExpanded.toString())
 		} catch (error) {
 			return generateErrorResponse(response, error)
 		}
@@ -52,7 +58,8 @@ module.exports = function (app) {
 		const resp = {
 			address,
 			balanceInWei: balanceInWei,
-			balanceInEth: Math.round(balanceInEth)
+			balanceInEth: Math.round(balanceInEth),
+			srkBalance: srkBalance
 		}
 		response.send(resp)
 	});
@@ -72,21 +79,20 @@ module.exports = function (app) {
 		if (!web3.utils.isAddress(receiver)) {
 			return generateErrorResponse(response, {message: messages.INVALID_ADDRESS})
 		}
-		
 		const gasPrice = web3.utils.toWei('1', 'gwei')
 		const gasPriceHex = web3.utils.toHex(gasPrice)
 		const gasLimitHex = web3.utils.toHex(config.Ethereum.gasLimit)
 		const nonce = await web3.eth.getTransactionCount(config.Ethereum[config.environment].account)
 		const nonceHex = web3.utils.toHex(nonce)
 		const BN = web3.utils.BN
-		const ethToSend = web3.utils.toWei(new BN(config.Ethereum.milliEtherToTransfer), "milliether")
+		const valueToSend = web3.utils.toWei(config.Ethereum.valueToTransfer, 'ether')
 		const rawTx = {
 		  nonce: nonceHex,
 		  gasPrice: gasPriceHex,
 		  gasLimit: gasLimitHex,
-		  to: receiver, 
-		  value: ethToSend,
-		  data: '0x00'
+		  to: config.Ethereum.Token.address,
+		  value: '0x0',
+		  data: await tokenContract.methods.transfer(receiver, valueToSend).encodeABI()
 		}
 
 		const tx = new EthereumTx(rawTx)
@@ -111,18 +117,18 @@ module.exports = function (app) {
 			}
 		})
 		.on('error', (error) => {
-			return generateErrorResponse(response, error)
+            return generateErrorResponse(response, error)
 		});
 	}
 
 	function sendRawTransactionResponse(txHash, response) {
 		const successResponse = {
-			code: 200, 
-			title: 'Success', 
+			code: 200,
+			title: 'Success',
 			message: messages.TX_HAS_BEEN_MINED,
 			txHash: txHash
 		}
-	  	
+
 	  	response.send({
 	  		success: successResponse
 	  	})
