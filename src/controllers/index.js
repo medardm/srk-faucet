@@ -1,4 +1,4 @@
-const EthereumTx = require('ethereumjs-tx')
+const Tx = require('ethereumjs-tx').Transaction
 const { generateErrorResponse } = require('../helpers/generate-response')
 const  { validateCaptcha } = require('../helpers/captcha-helper')
 const { debug } = require('../helpers/debug')
@@ -17,6 +17,7 @@ module.exports = function (app) {
 	const tokenContract = new web3.eth.Contract(config.Ethereum.Token.abi, config.Ethereum.Token.address);
 
 	app.post('/', async function(request, response) {
+	    console.log('post')
 		const isDebug = app.config.debug
 		debug(isDebug, "REQUEST:")
 		debug(isDebug, request.body)
@@ -74,12 +75,15 @@ module.exports = function (app) {
 	}
 
 	async function sendPOAToRecipient(web3, receiver, response, isDebug) {
+	    console.log('test')
 		let senderPrivateKey = config.Ethereum[config.environment].privateKey
 		const privateKeyHex = Buffer.from(senderPrivateKey, 'hex')
 		if (!web3.utils.isAddress(receiver)) {
 			return generateErrorResponse(response, {message: messages.INVALID_ADDRESS})
 		}
-		const gasPrice = web3.utils.toWei('1', 'gwei')
+	    console.log('after isAddress')
+	    console.log(await web3.eth.getTransactionCount(config.Ethereum[config.environment].account))
+		const gasPrice = web3.utils.toWei('50', 'gwei')
 		const gasPriceHex = web3.utils.toHex(gasPrice)
 		const gasLimitHex = web3.utils.toHex(config.Ethereum.gasLimit)
 		const nonce = await web3.eth.getTransactionCount(config.Ethereum[config.environment].account)
@@ -91,32 +95,37 @@ module.exports = function (app) {
 		  gasPrice: gasPriceHex,
 		  gasLimit: gasLimitHex,
 		  to: config.Ethereum.Token.address,
-		  value: '0x0',
-		  data: await tokenContract.methods.transfer(receiver, valueToSend).encodeABI()
+		  data: tokenContract.methods.transfer(receiver, valueToSend).encodeABI()
 		}
+	    console.log('transaction preparation')
 
-		const tx = new EthereumTx(rawTx)
+        const tx = new Tx(rawTx, {'chain':'ropsten'});
 		tx.sign(privateKeyHex)
+	    console.log('transaction signing')
 
 		const serializedTx = tx.serialize()
 
 		let txHash
 		web3.eth.sendSignedTransaction("0x" + serializedTx.toString('hex'))
-		.on('transactionHash', (_txHash) => {
+		.once('transactionHash', (_txHash) => {
+            console.log('tx hash')
 			txHash = _txHash
 		})
-		.on('receipt', (receipt) => {
+		.once('receipt', (receipt) => {
+            console.log('receipt')
 			debug(isDebug, receipt)
-			if (receipt.status == '0x1') {
-				return sendRawTransactionResponse(txHash, response)
-			} else {
-				const error = {
-					message: messages.TX_HAS_BEEN_MINED_WITH_FALSE_STATUS,
-				}
-				return generateErrorResponse(response, error);
-			}
+            console.log(receipt)
+            return sendRawTransactionResponse(txHash, response)
+			// if (receipt.status === '0x1') {
+			// } else {
+			// 	const error = {
+			// 		message: messages.TX_HAS_BEEN_MINED_WITH_FALSE_STATUS,
+			// 	}
+			// 	return generateErrorResponse(response, error);
+			// }
 		})
 		.on('error', (error) => {
+		    console.log('error sending')
             return generateErrorResponse(response, error)
 		});
 	}

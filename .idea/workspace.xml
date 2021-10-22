@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8ff18c0b-37ac-4ae4-b1b0-486309f84dc4" name="Change support to SRK token and adjust function calls" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/javascripts/application/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/javascripts/application/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/generate-response.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/generate-response.js" afterDir="false" />
     </list>
     <list id="3f13ff88-a1c3-448b-87c0-5d88c3a7f87a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,6 +75,10 @@
       <workItem from="1625132435099" duration="1041000" />
       <workItem from="1625133562103" duration="105000" />
       <workItem from="1625133697990" duration="18564000" />
+      <workItem from="1633959138696" duration="848000" />
+      <workItem from="1634025044059" duration="624000" />
+      <workItem from="1634027624618" duration="1361000" />
+      <workItem from="1634810068187" duration="2608000" />
     </task>
     <task id="LOCAL-00001" summary="Adjust user interface and config.json.prod">
       <created>1625211208337</created>
@@ -96,6 +100,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -106,6 +120,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adjust user interface and config.json.prod" />
